@@ -1,6 +1,6 @@
 
 
-const searchInput =null;
+
 const booklist=[
     {
         id: 1,
@@ -12,19 +12,27 @@ const booklist=[
         autor: "William Shakespear",
         title: "Hamlet"
     }
+
+
 ];
-function handlekeyPress(input){
-    searchbooks(input)
+// const searchField =document.children[0].children[1].children[1].children[1];
+const searchField =document.getElementById("searchField");
+console.log(searchField);
+
+// keydown, keyup
+searchField.addEventListener("keyup", handlekeyPress);
+
+function handlekeyPress(e){
+    searchbooks(e.target.value);
 
 }
 
-function searchbooks(searchterm){
+function searchbooks(searchTerm){
     let filteredlist =[];
     for (let i=0; i< booklist.length; i++){
         const title = booklist[i].title.toLowerCase();
         
-
-        if (title.indexOf(searchterm.toLowerCase()) >=0){
+        if (title.indexOf(searchTerm.toLowerCase()) >=0){
     
             filteredlist.push(booklist[i]);
         }
@@ -32,7 +40,7 @@ function searchbooks(searchterm){
     renderbooklist(filteredlist);
 }
 
-handlekeyPress("e");
+
 
 function renderbooklist(list){
     /* element i html-lsitan visas/döljs beroende på listans innehåll */
