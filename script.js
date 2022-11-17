@@ -4,12 +4,12 @@
 const booklist=[
     {
         id: 1,
-        autor: "Charles Dickens",
+        author: "Charles Dickens",
         title: "Oliver Twist"
     },
     {
         id: 2,
-        autor: "William Shakespear",
+        author: "William Shakespear",
         title: "Hamlet"
     }
 
@@ -42,29 +42,23 @@ function searchbooks(searchTerm){
 
 
 
-function renderbooklist(booklist){
+function renderbooklist(bookList){
     /* element i html-lsitan visas/döljs beroende på listans innehåll */
-    let html = `<ul class="book-list bg-white/70 rounded-md">`;
-    for (let i =0; i < booklist.length; i++){
-      html += `<li class="book-list__item mb-2 mx-2 last:mb-0 p-3 text-indigo-900 last:border-b-0 border-b border-indigo-700">
 
-                ${booklist[i].autor} - ${booklist[i].title}
-                </li>`
-       
-    }             
-    html += `</ul>`;
-    
     // hur man använder css klasser och hämtar dem.
     const existingElement = document.querySelector(".book-list");
-    console.log(existingElement);
+    console.log(existingElement)
 
     const root = document.getElementById("root");
     if(existingElement){
         root.removeChild(existingElement);
     }
+    if(bookList.length>0){
+        root.insertAdjacentHTML("beforeend", BookList(bookList));
+    }
+
     
-    // const htmlElement = document.createElement("ul");
-    // hur man kan skapa element med javascript
-    root.insertAdjacentHTML("beforeend", html);
+    //hur man kan skapa element med javascri
+    
 
 }
